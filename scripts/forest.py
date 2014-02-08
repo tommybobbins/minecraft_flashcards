@@ -6,9 +6,6 @@ number_trees = 0
 max_trees = 20
 
 def makeTree(x,z):
-    wood = 17
-    leaf = 18
-    nothing = 0
     y = mc.getHeight(x,z)
     mc.setBlock(x,y-1,z,block.GRASS.id)
     mc.setBlocks(x,y,z,x,y+3,z,block.WOOD.id)
@@ -27,8 +24,8 @@ x = pos.x
 z = pos.z
 
 while number_trees < max_trees:
-    x = pos.x + random.randint(-20,20)
-    z = pos.z + random.randint(-20,20)
+    x = pos.x + random.randint((-1 * max_trees),max_trees )
+    z = pos.z + random.randint(-1 * max_trees,max_trees)
     makeTree(x,z)
     number_trees += 1
 
