@@ -1,5 +1,5 @@
-minecraft_flashcards
-====================
+minecraft_flashcards and scripts
+================================
 
 A PDF set of Flashcards for the Raspberry Pi Minecraft API written in LaTeX, together with the scripts to run. Full LaTeX source for the flashcards is provided.
 
