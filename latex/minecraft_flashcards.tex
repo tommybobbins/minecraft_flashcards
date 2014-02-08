@@ -1,0 +1,298 @@
+%\documentclass[avery5371,grid]{flashcards}
+\documentclass[avery5388,grid]{flashcards}
+
+\cardfrontstyle[\large\slshape]{headings}
+\cardbackstyle{empty}
+\cardfrontfoot{Minecraft}
+%\addtolength{\textwidth}{2cm}
+%\addtolength{\hoffset}{-1cm}
+%\addtolength{\textheight}{2cm}
+%\addtolength{\voffset}{-1cm}
+%\usepackage{amssymb}
+%\usepackage{amsmath}
+\usepackage{datetime}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\normalsize\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+}
+
+
+\begin{document}
+
+
+
+\begin{flashcard}[Copyright \& License]{Copyright \copyright \, 2014 Tim Gibbon }
+\vspace*{\stretch{1}}
+Python scripts for controlling Minecraft Pi Edition on Raspberry Pi, found at mcpipy.com: \url{https://github.com/brooksc/mcpipy}\\
+Parts taken from Craig Richardson's Minecraft Pi Book: \url{http://arghbox.wordpress.com/}\\
+The book is licensed under the Creative Commons license of Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
+\begin{center}
+\begin{small}\tt tim.gibbon@lunarlite.co.uk\end{small}
+
+\medskip
+File last updated on \today, \\
+at \currenttime
+\end{center}
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+
+
+\lstset{language=Python}
+\begin{flashcard}[API]{Alice in Wonderland}
+\vspace*{\stretch{1}}
+{\bf Begin at the Beginning. Installing Minecraft }
+\begin{lstlisting}
+Click the icon for LXTerminal to open a new terminal window.
+wget 'https://s3.amazonaws.com/assets.minecraft.net/pi
+/minecraft-pi-0.1.1.tar.gz'
+\end{lstlisting}
+To decompress it:
+ \begin{lstlisting}
+tar -zxvf minecraft-pi-0.1.1.tar.gz
+\end{lstlisting}
+To run it: 
+ \begin{lstlisting}
+cd mcpi
+./minecraft-pi
+\end{lstlisting}
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[API]{Look Who's Talking}
+\vspace*{\stretch{1}}
+{\bf Writing to the console}
+\begin{lstlisting}
+import mcpi.minecraft as minecraft
+mc = minecraft.Minecraft.create()
+message = raw_input("Write here to chat:")
+mc.postToChat(message)
+\end{lstlisting}
+{\bf Where am I?}
+\begin{lstlisting}
+import mcpi.minecraft as minecraft
+mc = minecraft.Minecraft.create()
+pos = mc.player.getPos()
+x = pos.x
+y = pos.y
+z = pos.z
+mc.postToChat("x=%i, y=%i, z=%i" % (x,y,z))
+\end{lstlisting}
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\begin{flashcard}[API]{Forbidden Planet}
+\vspace*{\stretch{1}}
+{\bf Finding the Player continuously}
+\begin{lstlisting}
+import mcpi.minecraft as minecraft
+from time import sleep
+mc = minecraft.Minecraft.create()
+while True:
+    pos = mc.player.getPos()
+    x = pos.x
+    y = pos.y
+    z = pos.z
+    mc.postToChat("x=%i, y=%i, z=%i" % (x,y,z))
+    sleep(1)
+\end{lstlisting}
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\begin{flashcard}[API]{Goldfinger}
+\vspace*{\stretch{1}}
+{\bf Midas Touch}
+\begin{lstlisting}
+import mcpi.minecraft as minecraft
+import mcpi.block as block
+mc = minecraft.Minecraft.create()
+from time import sleep
+water = 9 # Declare a variable
+air = 0 # Declare a variable
+while True:
+    pos = mc.player.getTilePos()
+    blockBelow = mc.getBlock(pos.x, pos.y - 1, pos.z)
+    if blockBelow != air and blockBelow != water:
+        mc.setBlock(pos.x, pos.y - 1, pos.z, block.GOLD_BLOCK)
+    else:
+        mc.postToChat("Not placing block. Over water or air")
+        sleep(1)
+    sleep(0.1)
+\end{lstlisting}
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\begin{flashcard}[API]{Field of Dreams}
+\vspace*{\stretch{1}}
+{\bf Placing a block}
+\begin{lstlisting}
+import mcpi.minecraft as minecraft
+import mcpi.block as block
+mc = minecraft.Minecraft.create()
+pos = mc.player.getTilePos()
+mc.setBlock(pos.x, pos.y + 4, pos.z, block.DIAMOND_BLOCK)
+mc.postToChat("Look above you")
+\end{lstlisting}
+{\bf Flatten the planet}
+\begin{lstlisting}
+import mcpi.minecraft as minecraft
+import mcpi.block as block
+mc = minecraft.Minecraft.create() 
+mc.setBlocks(-128,0,-128,128,64,128,block.AIR)# Air above
+mc.setBlocks(-128,0,-128,128,-1,128,block.WATER)# Water below
+mc.postToChat("Waterworld in 5 minutes. Take a break.")
+\end{lstlisting}
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\begin{flashcard}[API]{Star Trek}
+\vspace*{\stretch{1}}
+{\bf Big Jump}
+\begin{lstlisting}
+import mcpi.minecraft as minecraft
+import mcpi.block as block
+mc = minecraft.Minecraft.create()
+pos = mc.player.getTilePos()
+mc.setBlock(pos.x, pos.y + 4, pos.z, block.GOLD_BLOCK)
+mc.player.setPos(pos.x,pos.y+10, pos.z) 
+\end{lstlisting}
+
+{\bf Teleport}
+\begin{lstlisting}
+import mcpi.minecraft as minecraft
+import mcpi.block as block
+mc = minecraft.Minecraft.create()
+mc.player.setTilePos(10,5,30)
+\end{lstlisting}
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\begin{flashcard}[API]{Raiders of the Lost Ark}
+\vspace*{\stretch{1}}
+{\bf Pyramid}
+\begin{lstlisting}
+import mcpi.minecraft as minecraft
+import mcpi.block as block
+mc = minecraft.Minecraft.create()
+[x,y,z] =  mc.player.getTilePos()
+# Set some variables to customize your pyramid
+height    =  4
+level  =  1
+# Execute the loop, building from the top down
+while level <= height:
+	mc.setBlocks( x - level, height - level, z - level,
+	                 x + level, height - level, z + level, block.TNT )
+	level  =  level + 0.5;
+# Put the player on top of the pyramid!
+mc.player.setPos( x, height, z )
+\end{lstlisting}
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[API]{Flash Gordon}
+\vspace*{\stretch{1}}
+{\bf Raining Rocks}
+\begin{lstlisting}
+import mcpi.minecraft as minecraft
+import mcpi.block as block
+import random
+from time import sleep
+mc = minecraft.Minecraft.create()
+while True: #Will keep running until Cntrl-C pressed
+    randomx = random.randint(-127, 127) # Random number between -127 and 127
+    randomz = random.randint(-127, 127) # Random number between -127 and 127
+    randomy = mc.getHeight(randomx, randomz)
+    randomy += 20
+    mc.setBlock(randomx, randomy, randomz, block.GRAVEL)
+    sleep(0.1)
+\end{lstlisting}
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\begin{flashcard}[API]{A New Hope}
+\vspace*{\stretch{1}}
+{\bf That's no Moon}
+\begin{lstlisting}
+import mcpi.minecraft as minecraft
+import mcpi.block as block
+mc = minecraft.Minecraft.create()
+pos = mc.player.getPos()
+radius = 6
+for x in range(-(radius),radius):
+    for y in range(-(radius), radius):
+        for z in range(-(radius),radius):
+            if x**2 + y**2 + z**2 < radius**2:
+                mc.setBlock(pos.x + x - radius -10 , pos.y + y + radius, pos.z -
+ z , block.COBBLESTONE)
+\end{lstlisting}
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\begin{flashcard}[API]{The Towering Inferno}
+\vspace*{\stretch{1}}
+{\bf Tower with Lava on top}
+\begin{lstlisting}
+import mcpi.minecraft as minecraft
+import mcpi.block as block
+mc = minecraft.Minecraft.create()
+radius = 4
+height = radius + 20 
+pos = mc.player.getPos()
+mc.setBlocks(pos.x + height, pos.y, pos.z, pos.x + radius, pos.y + height, pos.z + radius  , block.WOOL.id, 18)
+mc.setBlocks(pos.x + height, pos.y + height + 1, pos.z, pos.x + radius, pos.y + height + 1, pos.z + radius  , block.LAVA)
+\end{lstlisting}
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\begin{flashcard}[API]{The Italian Job}
+\vspace*{\stretch{1}}
+{\bf TNT Block }
+\begin{lstlisting}
+import mcpi.minecraft as minecraft
+import mcpi.block as block
+mc = minecraft.Minecraft.create()
+pos = mc.player.getTilePos()
+mc.setBlock(pos.x + 4, pos.y, pos.z , block.WOOL.id, 13) #Green
+mc.setBlock(pos.x + 4, pos.y , pos.z + 1 , block.WOOL.id, 0) #White
+mc.setBlock(pos.x + 4, pos.y , pos.z + 2 , block.WOOL.id, 14) #Red
+mc.setBlock(pos.x + 4, pos.y + 1, pos.z + 1, block.TNT.id, 1) #
+#Block is armed.
+mc.postToChat("Hit the TNT, then run.")
+\end{lstlisting}
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+
+
+
+
+
+\end{document}
