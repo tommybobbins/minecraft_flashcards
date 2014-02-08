@@ -36,6 +36,15 @@ def drawBuilding( locx, locy, locz, floors, width, depth, floorheight, wallmater
                 mc.setBlocks( locx+depth, windowYloc+j , locz+1, locx+depth, windowYloc+j, locz+(width-1), block.GLASS_PANE )
     #connect levels with ladder
     #mc.setBlocks( topx-1, locy+1, topz-1, topx-1, topy-1, topz-1, block.LADDER )
+#   Add width block height Pyramid on top for tiles
+    height = width
+    level = 1
+    while level <= height:
+        mc.setBlocks( locx - level + width/2 , topy + 5  - level, locz - level + depth/2, locx + level + width/2, topy + 5 - level, locz + level + depth/2, block.OBSIDIAN.id, 1 )
+#    mc.setBlocks( x - level, height - level, z - level, x + level, height - level, z + level, block.TNT.id, 1 )
+        level = level + 0.5
+#####End of Pyramid tiles
+
  
 if __name__ == "__main__":
     mc = minecraft.Minecraft.create()
