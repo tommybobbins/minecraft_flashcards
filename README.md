@@ -13,3 +13,24 @@ Python scripts for controlling Minecraft Pi Edition on Raspberry Pi, from the wo
 Code and Inspiration taken from Craig Richardson’s Minecraft Pi Book: http://arghbox.wordpress.com/
 Craig's book is licensed under the Creative Commons license of Attribution-
 NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
+
+Scripts included with these flashcards are:
+    all_blocks.py             - Put all available blocks into a Totem.
+    talking.py                - One off chat message.
+    look_whos_talking_two.py  - Show how to continually send chat messages.
+    rainingrocks.py           - Drop random gravel blocks from the sky. 
+    bigjump.py                - Teleport the player into the air.
+    midas.py                  - Square below the player turn to gold.
+    tower_lava.py             - Simple solid tower. Edit to add lava icing.
+    towerblock.py             - Build a towerblock with windows, doorway, floors and roof.
+    cuboid.py                 - Cuboid.
+    nomoon.py                 - Sphere.                
+    whereami_loop.py          - Continually post player location.
+    flatten_planet.py         - Remove all terrain.
+    place_one_block.py        - Place one block.
+    teleport.py               - Teleport the player to a fixed location.
+    whereami.py               - Find player location.
+    forest.py                 - Create random forest around player.
+    pyramid.py                - Create Pytamid.
+    tnt_explodes.py           - Create explosive block TNT.
+    woolly_world.py           - Create wool totem.
