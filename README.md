@@ -15,6 +15,7 @@ Craig's book is licensed under the Creative Commons license of Attribution-
 NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
 
 Scripts included with these flashcards are:
+
     all_blocks.py             - Put all available blocks into a Totem.
     talking.py                - One off chat message.
     look_whos_talking_two.py  - Show how to continually send chat messages.
