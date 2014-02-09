@@ -49,7 +49,8 @@ def drawBuilding( locx, locy, locz, floors, width, depth, floorheight, wallmater
 if __name__ == "__main__":
     mc = minecraft.Minecraft.create()
     pos = mc.player.getPos()
-    x = int(pos.x + 10)
-    z = int(pos.z + 5)
+    x = int(pos.x + 20)
+    z = int(pos.z + 15)
     y = int(mc.getHeight(x,z))
-    drawBuilding( x, y, z, 5, 5, 5, 3, block.BRICK_BLOCK, block.WOOD_PLANKS, block.STONE_BRICK )
+    #   x,y,z, width, depth, floors, heighfloor, wallsmaterial, floormaterial, roofmaterial
+    drawBuilding( x, y, z, 10, 10, 10, 3, block.BRICK_BLOCK, block.WOOD_PLANKS, block.STONE_BRICK )
