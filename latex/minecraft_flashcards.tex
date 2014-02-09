@@ -56,23 +56,34 @@ at \currenttime
 
 
 \lstset{language=Python}
+
 \begin{flashcard}[API]{Alice in Wonderland}
 \vspace*{\stretch{1}}
-{\bf Begin at the Beginning. Installing Minecraft }
-\begin{lstlisting}
-Click the icon for LXTerminal to open a new terminal window.
-wget 'https://s3.amazonaws.com/assets.minecraft.net/pi
-/minecraft-pi-0.1.1.tar.gz'
-\end{lstlisting}
-To decompress it:
- \begin{lstlisting}
-tar -zxvf minecraft-pi-0.1.1.tar.gz
-\end{lstlisting}
-To run it: 
- \begin{lstlisting}
-cd mcpi
-./minecraft-pi
-\end{lstlisting}
+%{\bf Minecraft controls}
+%\begin{table}
+\centering
+\begin{tabular}{l|r}
+\hline
+{\bf Key} & {\bf Action} \\
+\hline
+ESC &  Pause/Menu \\
+W & Move forward\\
+A & Move left\\
+S & Move backwards\\
+D & Move right\\
+E & Show inventory of blocks\\
+1-8 & Select items in the quick-bar\\
+\hline
+Left mouse & Destroy blocks\\
+Right mouse & Place blocks\\
+\hline
+Space &  Jump (ascend in fly-mode)\\
+Shift & Sneak (descend in fly-mode)\\
+\hline
+{\bf Alt + Tab } & Switch between windows \\
+\hline
+\end{tabular}
+%\end{table}
 \vspace*{\stretch{1}}
 \end{flashcard}
 
