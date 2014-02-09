@@ -7,7 +7,7 @@ Instructions to install Minecraft on the Raspberry Pi:
 http://pi.minecraft.net/
 
 After installing Minecraft Pi, it's easiest to move the Python libraries to a central location:
-sudo cp -rp /home/pi/mcpi/api/python/mcpi /usr/local/lib/python2.7/dist-packages/
+$    sudo cp -rp /home/pi/mcpi/api/python/mcpi /usr/local/lib/python2.7/dist-packages/
 
 Python scripts for controlling Minecraft Pi Edition on Raspberry Pi, from the work of Martin O' Hanlon found at mcpipy.com: https://github.com/brooksc/mcpipy
 Code and Inspiration taken from Craig Richardson’s Minecraft Pi Book: http://arghbox.wordpress.com/

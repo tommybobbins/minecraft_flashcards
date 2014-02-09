@@ -6,7 +6,7 @@ import random
  
     @author: goldfish"""
  
-def drawBuilding( locx, locy, locz, floors, width, depth, floorheight, wallmaterial, floormaterial ):
+def drawBuilding( locx, locy, locz, floors, width, depth, floorheight, wallmaterial, floormaterial, roofmaterial ):
     topx = locx+width
     topy = locy+((floorheight+1)*floors)
     topz = locz+depth
@@ -40,7 +40,7 @@ def drawBuilding( locx, locy, locz, floors, width, depth, floorheight, wallmater
     height = width
     level = 1
     while level <= height:
-        mc.setBlocks( locx - level + width/2 , topy + 5  - level, locz - level + depth/2, locx + level + width/2, topy + 5 - level, locz + level + depth/2, block.OBSIDIAN.id, 1 )
+        mc.setBlocks( locx - level + width/2 , topy + 5  - level, locz - level + depth/2, locx + level + width/2, topy + 5 - level, locz + level + depth/2, roofmaterial, 1 )
 #    mc.setBlocks( x - level, height - level, z - level, x + level, height - level, z + level, block.TNT.id, 1 )
         level = level + 0.5
 #####End of Pyramid tiles
@@ -52,4 +52,4 @@ if __name__ == "__main__":
     x = int(pos.x + 10)
     z = int(pos.z + 5)
     y = int(mc.getHeight(x,z))
-    drawBuilding( x, y, z, 5, 5, 5, 3, block.BRICK_BLOCK, block.WOOD_PLANKS )
+    drawBuilding( x, y, z, 5, 5, 5, 3, block.BRICK_BLOCK, block.WOOD_PLANKS, block.STONE_BRICK )
