@@ -31,7 +31,8 @@ Scripts included with these flashcards are:
     place_one_block.py        - Place one block.
     teleport.py               - Teleport the player to a fixed location.
     whereami.py               - Find player location.
-    forest.py                 - Create random forest around player.
-    pyramid.py                - Create Pytamid.
-    tnt_explodes.py           - Create explosive block TNT.
-    woolly_world.py           - Create wool totem.
+    a_forest.py                 - Random forest around player.
+    pyramid.py                - Pyramid.
+    tnt_explodes.py           - Explosive block TNT.
+    woolly_world.py           - Wool totem to show all colours.
+    woody_world.py            - Wood totem to show wood types.
