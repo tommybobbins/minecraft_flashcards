@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Minecraft
+Comment=Minecraft for the Raspberry Pi
+Exec=/home/pi/mcpi/minecraft-pi
+Icon=/usr/share/pixmaps/minecraft.xpm
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Application;Development;
+StartupNotify=true
