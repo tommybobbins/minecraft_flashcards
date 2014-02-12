@@ -23,6 +23,7 @@ Scripts included with these flashcards are:
     rainingrocks.py           - Drop random gravel blocks from the sky. 
     bigjump.py                - Teleport the player into the air.
     midas.py                  - Square below the player turn to gold.
+    midas_armed_tnt.py        - Square below the player turn to armed TNT.
     tower_lava.py             - Simple solid tower. Edit to add lava icing.
     towerblock.py             - Build a towerblock with windows, doorway, floors and roof.
     cuboid.py                 - Cuboid.
@@ -32,7 +33,7 @@ Scripts included with these flashcards are:
     place_one_block.py        - Place one block.
     teleport.py               - Teleport the player to a fixed location.
     whereami.py               - Find player location.
-    a_forest.py                 - Random forest around player.
+    a_forest.py               - Random forest around player.
     pyramid.py                - Pyramid.
     tnt_explodes.py           - Explosive block TNT.
     woolly_world.py           - Wool totem to show all colours.
