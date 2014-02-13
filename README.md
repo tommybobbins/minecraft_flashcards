@@ -3,6 +3,12 @@ minecraft_flashcards and scripts
 
 A PDF set of Flashcards for the Raspberry Pi Minecraft API written in LaTeX, together with the scripts to run. Full LaTeX source for the flashcards is provided.
 
+Clone this repository:
+On your Raspberry Pi, open up an LXTerm:
+pi@raspberrypi ~/$ git clone "https://github.com/tommybobbins/minecraft_flashcards"
+
+Example scripts in scripts, source code for the flash card is in latex. minecraft_icon gives a friendly desktop icon.
+
 Instructions to install Minecraft on the Raspberry Pi:
 http://pi.minecraft.net/
 
