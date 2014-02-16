@@ -3,7 +3,7 @@ import mcpi.block as block
 mc = minecraft.Minecraft.create()
 from time import sleep
 radius = 7
-height = radius + 6
+height = radius + 15
 outer = radius + 10
 moat = outer + 2
 tnt = 46
@@ -51,8 +51,9 @@ mc.setBlocks(pos.x - outer + 2 , pos.y, pos.z, pos.x - outer + 2 , pos.y + (heig
 mc.postToChat("Making Keep")
 make_walls(pos.x + radius, pos.y, pos.z - radius, pos.x - radius, pos.y + height, pos.z + radius  , block.STONE_BRICK,block.WOOD_PLANKS,True)
 mc.postToChat("Making Keep Roof")
-mc.setBlocks(pos.x + radius - 1, pos.y + height - 2, pos.z - radius + 1, pos.x - radius + 1, pos.y + height - 2, pos.z + radius - 1, block.STONE_BRICK)
+mc.setBlocks(pos.x + radius - 1, pos.y + height - 2, pos.z - radius + 1, pos.x - radius + 1, pos.y + height - 2, pos.z + radius - 1, 155) # Quartz
 mc.postToChat("Making Doorway")
 mc.setBlocks(pos.x + radius, pos.y , pos.z - 1, pos.x + radius, pos.y + 2, pos.z + 1,block.AIR)
 mc.postToChat("Making Mood Lighting")
 mc.setBlocks(pos.x + radius - 1, pos.y + (height/2) , pos.z - radius + 1, pos.x - radius + 1, pos.y + (height/2), pos.z + radius - 1,block.TORCH)
+mc.setBlock(pos.x,pos.y+ height - 2,pos.z,block.GLOWSTONE_BLOCK)
