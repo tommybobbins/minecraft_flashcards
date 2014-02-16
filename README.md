@@ -5,7 +5,8 @@ A PDF set of Flashcards for the Raspberry Pi Minecraft API written in LaTeX, tog
 
 Clone this repository:
 On your Raspberry Pi, open up an LXTerm:
-pi@raspberrypi ~/$ git clone "https://github.com/tommybobbins/minecraft_flashcards"
+
+    pi@raspberrypi ~/$ git clone "https://github.com/tommybobbins/minecraft_flashcards"
 
 Example scripts in scripts, source code for the flash card is in latex. minecraft_icon gives a friendly desktop icon.
 
