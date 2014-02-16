@@ -42,7 +42,7 @@ Scripts included with these flashcards are:
     whereami.py               - Find player location.
     a_forest.py               - Random forest around player.
     pyramid.py                - Pyramid.
-    castle.py	              - Castle, and bailey
+    castle.py	              - Castle and bailey
     tnt_explodes.py           - Explosive block TNT.
     woolly_world.py           - Wool totem to show all colours.
     woody_world.py            - Wood totem to show wood types.
