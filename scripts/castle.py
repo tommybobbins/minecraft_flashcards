@@ -2,7 +2,7 @@ import mcpi.minecraft as minecraft
 import mcpi.block as block
 mc = minecraft.Minecraft.create()
 from time import sleep
-radius = 6
+radius = 7
 height = radius + 6
 outer = radius + 10
 moat = outer + 2
@@ -14,6 +14,8 @@ def make_walls(x1,y1,z1,x2,y2,z2,material,floormaterial,crenelations):
     mc.setBlocks(x1, y1, z1, x2, y2, z2, material)
     mc.setBlocks(x1 - 1, y1, z1 + 1, x2 + 1, y2, z2 -1, block.AIR)
     mc.setBlocks(x1 - 1, y1-1, z1 + 1, x2 + 1, y1 -1, z2 -1, floormaterial)
+##### Making Crenelations is slow, set to False for rapid building. 
+##### Add when you are happy ###### 
     if crenelations: 
         x2 = int(x2)
         x1 = int(x1)
@@ -39,6 +41,13 @@ mc.postToChat("Making Curtain Wall")
 make_walls(pos.x + outer , pos.y, pos.z - outer, pos.x - outer , pos.y + (height/2), pos.z + outer, block.STONE_BRICK,block.MOSS_STONE,True)
 mc.postToChat("Making Wall Walk")
 make_walls(pos.x + outer - 1 , pos.y, pos.z - outer + 1, pos.x - outer + 1 , pos.y + (height/2) - 2, pos.z + outer - 1, block.STONE_BRICK,block.MOSS_STONE,False)
+mc.postToChat("Making Gate")
+mc.setBlocks(pos.x + outer - 2, pos.y , pos.z - 1, pos.x + outer, pos.y + 2, pos.z + 1,block.AIR)
+mc.postToChat("Making Ladders")
+mc.setBlocks(pos.x, pos.y, pos.z + outer - 2, pos.x, pos.y + (height/2) - 2, pos.z + outer - 2 , block.LADDER.id, 2)
+mc.setBlocks(pos.x, pos.y, pos.z - outer + 2, pos.x, pos.y + (height/2) - 2, pos.z - outer + 2 , block.LADDER.id, 3)
+mc.setBlocks(pos.x + outer - 2 , pos.y, pos.z + (radius/2), pos.x + outer - 2 , pos.y + (height/2) - 2, pos.z + (radius/2), block.LADDER.id, 4)
+mc.setBlocks(pos.x - outer + 2 , pos.y, pos.z, pos.x - outer + 2 , pos.y + (height/2) - 2, pos.z, block.LADDER.id, 5)
 mc.postToChat("Making Keep")
 make_walls(pos.x + radius, pos.y, pos.z - radius, pos.x - radius, pos.y + height, pos.z + radius  , block.STONE_BRICK,block.WOOD_PLANKS,True)
 mc.postToChat("Making Keep Roof")
