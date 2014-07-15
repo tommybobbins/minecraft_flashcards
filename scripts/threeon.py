@@ -14,8 +14,8 @@ GPIO.setup(18, GPIO.OUT)
 #Short distance: 43, long distance: 157, packet distance: 1672
 
 #Simulated
-Pulse coding: Short pulse length 54 - Long pulse length 160
-Short distance: 48, long distance: 161, packet distance: 799
+#Pulse coding: Short pulse length 54 - Long pulse length 160
+#Short distance: 48, long distance: 161, packet distance: 799
 
 
 

@@ -5,18 +5,18 @@ import threeon
 from time import sleep
 from threeon import switch_socket
 mc = minecraft.Minecraft.create()
-mc.postToChat("Do NOT Step on the Gold block")
+mc.postToChat("Gold block on. Diamond block off.")
 while True:
     pos = mc.player.getTilePos()
     blockBelow = mc.getBlock(pos.x, pos.y - 1, pos.z)
     if (blockBelow == 41):
 #       print ("Block Below is %s" % blockBelow)
-        mc.postToChat("Bang!")
+        mc.postToChat("On!")
         switch_socket('on')
         sleep(1)
     elif (blockBelow == 57):
         switch_socket('off')
-        mc.postToChat("Kaput!")
+        mc.postToChat("Off!")
         sleep(1)
     else:
        sleep(1)
