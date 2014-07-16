@@ -6,7 +6,10 @@ from time import sleep
 import time
 found_lighthouses = 0
 lighthouse = 0
-number_of_lighthouses = 10
+##### Make the game easier with high number_of_lighthouses_make
+##### compared to number_of_lighthouses_find
+number_of_lighthouses_find = 10
+number_of_lighthouses_make = 30
 fourthreethree = False
 ###############################################
 ###Uncomment if there is a 433 Transmitter
@@ -26,16 +29,16 @@ def create_lighthouse(x,z):
 
 if __name__ == "__main__":
         # Build initial set of lighthouses at random positions on the map
-    while (lighthouse < number_of_lighthouses):
+    while (lighthouse < number_of_lighthouses_make):
         xlighthouse=random.randint(-126,126)
         zlighthouse=random.randint(-126,126)
         create_lighthouse(xlighthouse,zlighthouse)
         mc.postToChat("Created lighthouse %i" % lighthouse)
         lighthouse += 1
-    mc.postToChat("Land on top of the lighthouses!")
+    mc.postToChat("Land on top of %i lighthouses!" % number_of_lighthouses_find)
     # Main game starts here
     start_game = time.time()
-    while (found_lighthouses < number_of_lighthouses):
+    while (found_lighthouses < number_of_lighthouses_find):
         pos = mc.player.getTilePos()
         blockBelow = mc.getBlock(pos.x, pos.y - 1, pos.z)
         if (blockBelow == 20):
@@ -47,7 +50,8 @@ if __name__ == "__main__":
                 sleep(1)
                 switch_socket('off')
             found_lighthouses += 1
-            mc.postToChat("Found %i lighthouses" % found_lighthouses)
+            number_of_lighthouses_left = number_of_lighthouses_find - found_lighthouses
+            mc.postToChat("Found %i lighthouses, %i to go" % (found_lighthouses,number_of_lighthouses_left))
         else:
             sleep(0.5)
     end_game = time.time()
