@@ -22,7 +22,7 @@ def create_lighthouse(x,z):
     mc.setBlock(x, height+1, z , block.WOOL.id, 14 )
     mc.setBlock(x, height+2, z , block.WOOL.id, 0 )
     mc.setBlock(x, height+3, z , block.WOOL.id, 14 )
-    mc.setBlock(x, height+4, z , 57 )
+    mc.setBlock(x, height+4, z , 20 )
 
 if __name__ == "__main__":
         # Build initial set of lighthouses at random positions on the map
@@ -38,8 +38,8 @@ if __name__ == "__main__":
     while (found_lighthouses < number_of_lighthouses):
         pos = mc.player.getTilePos()
         blockBelow = mc.getBlock(pos.x, pos.y - 1, pos.z)
-        if (blockBelow == 57):
-            # blockBelow player is Diamond - we make it Gold when lit
+        if (blockBelow == 20):
+            # blockBelow player is Glass - we make it Gold when lit
             mc.setBlock(pos.x, pos.y - 1 , pos.z , 41 )
             mc.postToChat("On!")
             if (fourthreethree):
