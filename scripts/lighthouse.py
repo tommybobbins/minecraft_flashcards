@@ -7,6 +7,7 @@ import time
 found_lighthouses = 0
 lighthouse = 0
 number_of_lighthouses = 10
+fourthreethree = False
 ###############################################
 ###Uncomment if there is a 433 Transmitter
 #import threeon
@@ -24,7 +25,7 @@ def create_lighthouse(x,z):
     mc.setBlock(x, height+4, z , 57 )
 
 if __name__ == "__main__":
-        # Build initial set of lighthouses
+        # Build initial set of lighthouses at random positions on the map
     while (lighthouse < number_of_lighthouses):
         xlighthouse=random.randint(-126,126)
         zlighthouse=random.randint(-126,126)
@@ -38,16 +39,15 @@ if __name__ == "__main__":
         pos = mc.player.getTilePos()
         blockBelow = mc.getBlock(pos.x, pos.y - 1, pos.z)
         if (blockBelow == 57):
-            # blockBelow player is Diamond 
+            # blockBelow player is Diamond - we make it Gold when lit
             mc.setBlock(pos.x, pos.y - 1 , pos.z , 41 )
             mc.postToChat("On!")
             if (fourthreethree):
                 switch_socket('on')
+                sleep(1)
+                switch_socket('off')
             found_lighthouses += 1
             mc.postToChat("Found %i lighthouses" % found_lighthouses)
-            sleep(1)
-            if (fourthreethree):
-                switch_socket('off')
         else:
             sleep(0.5)
     end_game = time.time()
