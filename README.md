@@ -46,3 +46,7 @@ Scripts included with these flashcards are:
     tnt_explodes.py           - Explosive block TNT.
     woolly_world.py           - Wool totem to show all colours.
     woody_world.py            - Wood totem to show wood types.
+    lighton.py                - Switch a 240V light on using a 433 transmitter.
+    threeon.py                - Used for turning on/off Energenie 433 transmitter.
+    lightonoff.py             - Gold/Diamond used to switch on / off 433 transmitter.
+    lighthouse.py             - Race against the clock to switch on 10 lighthouses.
