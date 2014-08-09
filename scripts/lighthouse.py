@@ -6,6 +6,7 @@ from time import sleep
 import time
 found_lighthouses = 0
 lighthouse = 0
+lighthouses={}
 ##### Make the game easier with high number_of_lighthouses_make
 ##### compared to number_of_lighthouses_find
 number_of_lighthouses_find = 10
@@ -25,13 +26,20 @@ def create_lighthouse(x,z):
     mc.setBlock(x, height+2, z , block.WOOL.id, 0 )
     mc.setBlock(x, height+3, z , block.WOOL.id, 14 )
     mc.setBlock(x, height+4, z , 20 )
+    return(x,height,z)
+
+def destroy_lighthouse(x,y,z):
+    height = mc.getHeight(x,z)
+    height = y
+    mc.setBlocks(x, height, z ,x , height+4, z, block.AIR.id, 0 )
+#    mc.postToChat("Cleaning up lighthouse %i %i %i" % (x,y,z))
 
 if __name__ == "__main__":
         # Build initial set of lighthouses at random positions on the map
     while (lighthouse < number_of_lighthouses_make):
         xlighthouse=random.randint(-126,126)
         zlighthouse=random.randint(-126,126)
-        create_lighthouse(xlighthouse,zlighthouse)
+        lighthouses[lighthouse]=create_lighthouse(xlighthouse,zlighthouse)
         mc.postToChat("Created lighthouse %i" % lighthouse)
         lighthouse += 1
     mc.postToChat("Land on top of %i lighthouses!" % number_of_lighthouses_find)
@@ -56,5 +64,9 @@ if __name__ == "__main__":
     end_game = time.time()
     elapsed = end_game - start_game 
     mc.postToChat("Found all lighthouses in %s seconds" % elapsed)
+    for key in lighthouses:
+        (lhx,lhy,lhz)=lighthouses[key]
+        destroy_lighthouse(lhx,lhy,lhz)
+    mc.postToChat("Removed all lighthouses")
     if (fourthreethree):
         switch_socket('off')
