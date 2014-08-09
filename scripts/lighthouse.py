@@ -11,6 +11,8 @@ lighthouses={}
 ##### compared to number_of_lighthouses_find
 number_of_lighthouses_find = 10
 number_of_lighthouses_make = 30
+map_sizea = 55 
+map_sizeb = 192
 fourthreethree = False
 espeakEnabled=False
 ###############################################
@@ -45,8 +47,8 @@ def destroy_lighthouse(x,y,z):
 if __name__ == "__main__":
         # Build initial set of lighthouses at random positions on the map
     while (lighthouse < number_of_lighthouses_make):
-        xlighthouse=random.randint(-190,190)
-        zlighthouse=random.randint(-190,190)
+        xlighthouse=random.randint(-map_sizeb,map_sizea)
+        zlighthouse=random.randint(-map_sizea,map_sizeb)
         lighthouses[lighthouse]=create_lighthouse(xlighthouse,zlighthouse)
         mc.postToChat("Created lighthouse %i" % lighthouse)
         lighthouse += 1
