@@ -1,9 +1,8 @@
 #!/usr/bin/python
 import mcpi.minecraft as minecraft
 import mcpi.block as block
-import threeon
 from time import sleep
-from threeon import switch_socket
+from fourthreethree_transmitter.threeon import switch_socket
 mc = minecraft.Minecraft.create()
 mc.postToChat("Gold block on. Diamond block off.")
 while True:

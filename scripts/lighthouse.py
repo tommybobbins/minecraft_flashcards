@@ -13,8 +13,7 @@ number_of_lighthouses_make = 30
 fourthreethree = False
 ###############################################
 ###Uncomment if there is a 433 Transmitter
-#import threeon
-#from threeon import switch_socket
+#from fourthreethree_transmitter.threeon import switch_socket
 #fourthreethree = True
 ###############################################
 import random
