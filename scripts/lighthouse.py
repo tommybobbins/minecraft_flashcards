@@ -12,10 +12,18 @@ lighthouses={}
 number_of_lighthouses_find = 10
 number_of_lighthouses_make = 30
 fourthreethree = False
+espeakEnabled=False
 ###############################################
 ###Uncomment if there is a 433 Transmitter
 #from fourthreethree_transmitter.threeon import switch_socket
 #fourthreethree = True
+###############################################
+###############################################
+# To enable the game to speak to the player:
+# $ sudo apt-get install python-espeak
+# Then uncomment the following lines
+#from espeak import espeak
+#espeakEnabled=True
 ###############################################
 import random
 def create_lighthouse(x,z):
@@ -37,12 +45,18 @@ def destroy_lighthouse(x,y,z):
 if __name__ == "__main__":
         # Build initial set of lighthouses at random positions on the map
     while (lighthouse < number_of_lighthouses_make):
-        xlighthouse=random.randint(-126,126)
-        zlighthouse=random.randint(-126,126)
+        xlighthouse=random.randint(-190,190)
+        zlighthouse=random.randint(-190,190)
         lighthouses[lighthouse]=create_lighthouse(xlighthouse,zlighthouse)
         mc.postToChat("Created lighthouse %i" % lighthouse)
         lighthouse += 1
     mc.postToChat("Land on top of %i lighthouses!" % number_of_lighthouses_find)
+    if espeakEnabled:
+        espeak.synth("Ready.")
+        sleep(1)
+        espeak.synth("Steady.")
+        sleep(1)
+        espeak.synth("Go")
     # Main game starts here
     start_game = time.time()
     while (found_lighthouses < number_of_lighthouses_find):
@@ -59,6 +73,8 @@ if __name__ == "__main__":
             found_lighthouses += 1
             number_of_lighthouses_left = number_of_lighthouses_find - found_lighthouses
             mc.postToChat("Found %i lighthouses, %i to go" % (found_lighthouses,number_of_lighthouses_left))
+            if espeakEnabled:
+                espeak.synth(" %i to go" % number_of_lighthouses_left)
         else:
             sleep(0.5)
     end_game = time.time()
@@ -67,6 +83,9 @@ if __name__ == "__main__":
     for key in lighthouses:
         (lhx,lhy,lhz)=lighthouses[key]
         destroy_lighthouse(lhx,lhy,lhz)
+    if espeakEnabled:
+        sleep(1)
+        espeak.synth("Found all lighthouses.")
     mc.postToChat("Removed all lighthouses")
     if (fourthreethree):
         switch_socket('off')
