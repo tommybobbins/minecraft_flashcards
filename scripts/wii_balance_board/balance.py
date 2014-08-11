@@ -17,6 +17,9 @@ name = joystick.get_name()
 print("Joystick name: {%s}" % name )
 axes = joystick.get_numaxes()
 print("Number of axes: {%s}" % axes )
+# Average 8 year old
+calibration_factor = 1.02
+# Average male adult
 calibration_factor = 1.05
 
 if __name__ == "__main__":
