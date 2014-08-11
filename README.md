@@ -50,3 +50,4 @@ Scripts included with these flashcards are:
     threeon.py                - Used for turning on/off Energenie 433 transmitter.
     lightonoff.py             - Gold/Diamond used to switch on / off 433 transmitter.
     lighthouse.py             - Race against the clock to switch on 10 lighthouses.
+    wii_balance_board/        - Directory containing wii balance board Minecraft demos, including modified lighthouse game

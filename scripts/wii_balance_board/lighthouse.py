@@ -1,5 +1,7 @@
 #!/usr/bin/python
 import mcpi.minecraft as minecraft
+import pygame
+pygame.init()
 import mcpi.block as block
 mc = minecraft.Minecraft.create()
 from time import sleep
@@ -7,6 +9,19 @@ import time
 found_lighthouses = 0
 lighthouse = 0
 lighthouses={}
+##############################################################
+# Balance board code 
+# Initialize the joysticks
+pygame.joystick.init()
+joystick = pygame.joystick.Joystick(0)
+joystick.init()
+bb_pos={}
+name = joystick.get_name()
+print("Joystick name: {%s}" % name )
+axes = joystick.get_numaxes()
+print("Number of axes: {%s}" % axes )
+calibration_factor = 1.05
+###############################################################
 ##### Make the game easier with high number_of_lighthouses_make
 ##### compared to number_of_lighthouses_find
 number_of_lighthouses_find = 10
@@ -63,6 +78,35 @@ if __name__ == "__main__":
     start_game = time.time()
     while (found_lighthouses < number_of_lighthouses_find):
         pos = mc.player.getTilePos()
+        direction_of_travel = "stopped"
+        events=pygame.event.get()
+        for i in range( axes ):
+            bb_pos[i] = float(joystick.get_axis(i))
+        forwards_or_backwards = (bb_pos[2] + bb_pos[0])/(bb_pos[3] + bb_pos[1])
+        left_or_right = (bb_pos[2] + bb_pos[3])/(bb_pos[0] + bb_pos[1])
+        abs_fb = abs(forwards_or_backwards - 1.0)
+        abs_lr = abs(left_or_right - 1.0)
+        if abs_fb > abs_lr:
+#            print ("Mainly trying to move forward backwards")
+            if forwards_or_backwards < 1.0/calibration_factor:
+                direction_of_travel="Forwards"
+                mc.player.setTilePos(pos.x,pos.y,pos.z-1)
+            elif forwards_or_backwards > 1.0*calibration_factor:
+                direction_of_travel="Backwards"
+                mc.player.setTilePos(pos.x,pos.y,pos.z+1)
+            else:
+                direction_of_travel="Stopped"
+        elif abs_fb < abs_lr:
+#            print ("Mainly trying to move Left Right")
+            if left_or_right < 1.0/calibration_factor:
+                direction_of_travel="Left"
+                mc.player.setTilePos(pos.x-1,pos.y,pos.z)
+            elif left_or_right > 1.0*calibration_factor:
+                direction_of_travel="Right"
+                mc.player.setTilePos(pos.x+1,pos.y,pos.z)
+            else:
+                direction_of_travel="Stopped"
+#        print (direction_of_travel)
         blockBelow = mc.getBlock(pos.x, pos.y - 1, pos.z)
         if (blockBelow == 20):
             # blockBelow player is Glass - we make it Gold when lit
@@ -78,7 +122,7 @@ if __name__ == "__main__":
             if espeakEnabled:
                 espeak.synth(" %i to go" % number_of_lighthouses_left)
         else:
-            sleep(0.5)
+            sleep(0.01)
     end_game = time.time()
     elapsed = end_game - start_game 
     mc.postToChat("Found all lighthouses in %s seconds" % elapsed)
