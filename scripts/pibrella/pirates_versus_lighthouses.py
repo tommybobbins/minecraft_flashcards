@@ -4,6 +4,7 @@ import mcpi.block as block
 mc = minecraft.Minecraft.create()
 from time import sleep
 import time
+from math import sqrt
 found_lighthouses = 0
 lighthouse = 0
 lighthouses = {}
@@ -39,44 +40,58 @@ def create_lighthouse(x,z):
     mc.setBlock(x, height+4, z , 41 )
     return (x,height,z)
 
-def create_uber_lighthouse(x,z):
-    # Create a lighthouse at x,z 
-    height = mc.getHeight(x,z)
-    mc.setBlocks(x-2, height-1, z-2,x+2, height -1 , z+2 , 48 )
-    mc.setBlocks(x-1, height, z-1,x+1, height+30 , z+1 , block.WOOL.id,0 )
-    mc.setBlocks(x-1, height+3, z-1,x+1, height+5 , z+1 , block.WOOL.id,14 )
-    mc.setBlocks(x-1, height+9, z-1,x+1, height+11 , z+1 , block.WOOL.id,14 )
-    mc.setBlocks(x-1, height+15, z-1,x+1, height+17 , z+1 , block.WOOL.id,14 )
-    mc.setBlocks(x-1, height+21, z-1,x+1, height+23 , z+1 , block.WOOL.id,14 )
-    mc.setBlocks(x-1, height+31, z-1,x+1, height+35 , z+1 , 41 )
-
 def destroy_lighthouse(x,y,z):
     height = mc.getHeight(x,z)
-    height = y
-    mc.setBlocks(x-2, height, z-2 ,x+2 , height+32, z+2, block.AIR.id, 0 )
+    mc.setBlocks(x-1, height, z-1 ,x+1 , height+6, z+1, block.AIR.id, 0 )
 #    mc.postToChat("Cleaning up lighthouse %i %i %i" % (x,y,z))
+
+def make_it_dark():
+######35 is Wool###############
+     mc.setBlocks(-125,40,-125,125,41,125,35, 0)
+def make_it_light():
+######Get rid of Wool##########
+     mc.setBlocks(-125,40,-125,125,41,125,0, 0)
+
+def plant_booty(x,z):
+    # Create a set of treasure chests at x,z 
+    height = mc.getHeight(x,z)
+    mc.setBlocks(x-5, height, z-5,x+5, height +90 , z+5 , 0 )
+    mc.setBlocks(x-3, height-1, z-3,x+3, height -1 , z+3 , 48 )
+    mc.setBlocks(x-5, height, z-3,x+5, height , z+8 , 12 )
+    mc.setBlocks(x-1, height+1, z-1,x+1, height +1, z+1 , 74 )
+    mc.setBlocks(x-1, height+2, z-1,x+1, height +2, z+1 , 89 )
+    mc.setBlocks(x-1, height+3, z-1,x+1, height +3, z+1 , 54 )
+    return (x,height,z)
+
+def remove_booty(x,z):
+    height = mc.getHeight(x,z)
+    mc.setBlocks(x-3, height-1, z-3,x+3, height +90 , z+3 , 0 )
+    return (x,height,z)
 
 def run_game():
     found_lighthouses = 0
+    toldtoPressTNT = False
     lighthouse = 0
         # Build initial set of lighthouses at random positions on the map
     while (lighthouse < number_of_lighthouses_make):
-        xlighthouse=random.randint(-56,126)
-        zlighthouse=random.randint(-126,56)
+        xlighthouse=random.randint(-110,110)
+        zlighthouse=random.randint(-110,110)
         lighthouses[lighthouse]=create_lighthouse(xlighthouse,zlighthouse)
         #print ("%i %i %i" % (x,y,z) )
 #        mc.postToChat("Created lighthouse %i" % lighthouse)
         lighthouse += 1
-    xlighthouse=random.randint(-24,24)
-    zlighthouse=random.randint(-24,24)
-    lighthouses[number_of_lighthouses_find]=create_uber_lighthouse(xlighthouse,zlighthouse)
-    mc.postToChat("Land on top of %i lighthouses!" % number_of_lighthouses_find)
+#    make_it_dark()
+#    mc.postToChat("Making it dark....")
+    xbooty=random.randint(-110,110)
+    ybooty=random.randint(-110,110)
+    (bootyx,bootyy,bootyz)=plant_booty(xbooty,ybooty)
+    mc.postToChat("Plant TNT on top of %i lighthouses!" % number_of_lighthouses_find)
     # Main game starts here
     start_game = time.time()
     while (found_lighthouses < number_of_lighthouses_find):
         if (pibrella_enabled):
             if (found_lighthouses >= number_of_lighthouses_find):
-                pibrella.light.all.on()
+	        pibrella.light.all.on()
             if (found_lighthouses > 7):
                 pibrella.light.red.on()
                 pibrella.light.amber.on()
@@ -93,18 +108,45 @@ def run_game():
         pos = mc.player.getTilePos()
         blockBelow = mc.getBlock(pos.x, pos.y - 1, pos.z)
         if (blockBelow == 41):
-            mc.postToChat("Press button to plant TNT!")
+            if (toldtoPressTNT == False):
+                mc.postToChat("Press button to plant TNT!")
+                toldtoPressTNT = True 
             landed_on_lighthouse=True
             # blockBelow player is Gold - we make it TNT 
             if pibrella.button.read() == 1:
                 mc.setBlock(pos.x, pos.y-1, pos.z, block.TNT.id,1)
                 found_lighthouses += 1
-            number_of_lighthouses_left = number_of_lighthouses_find - found_lighthouses
-            mc.postToChat("Found %i lighthouses, %i to go" % (found_lighthouses,number_of_lighthouses_left))
-            if espeakEnabled:
-               espeak.synth("%i to go" % number_of_lighthouses_left)
+                number_of_lighthouses_left = number_of_lighthouses_find - found_lighthouses
+                mc.postToChat("Found %i lighthouses, %i to go" % (found_lighthouses,number_of_lighthouses_left))
+                toldtoPressTNT = False
+                if espeakEnabled:
+                   espeak.synth("%i to go" % number_of_lighthouses_left)
         else:
             sleep(0.01)
+    bootyAvailable = True
+    mc.postToChat("Find the booty me hearty")
+    pibrella.light.off()
+    mc.postToChat("When the green lantern be lit, ye be close")
+    mc.postToChat("When the tick-tocker stops, ye be close")
+    while (bootyAvailable == True):
+        pos = mc.player.getTilePos()
+        blockBelow = mc.getBlock(pos.x, pos.y - 1, pos.z)
+        distance_to_booty = sqrt((pos.x - bootyx)**2 + (pos.y - bootyy)**2 + (pos.z - bootyz)**2)
+        pibrella.buzzer.buzz((distance_to_booty+1.0)/10)
+        if (distance_to_booty < 150) and (distance_to_booty > 50):
+            pibrella.light.red.on()
+        elif (distance_to_booty >= 50):
+            pibrella.light.red.on()
+            pibrella.light.amber.on()
+        elif (distance_to_booty > 0):
+            pibrella.light.red.on()
+            pibrella.light.green.on()
+            pibrella.light.amber.on()
+        #mc.postToChat("Distance to booty = %f " % distance_to_booty)
+        if (blockBelow == 54):
+            mc.postToChat("Found the booty")
+            mc.postToChat("YOHOHO")
+            bootyAvailable = False  
     end_game = time.time()
     elapsed = end_game - start_game 
     if pibrella_enabled: 
@@ -115,13 +157,12 @@ def run_game():
     for key in lighthouses:
         (lhx,lhy,lhz)=lighthouses[key]
         destroy_lighthouse(lhx,lhy,lhz)
+    remove_booty(xbooty,ybooty)
+#    make_it_light()
     if espeakEnabled:
-        sleep(1)
         espeak.synth("Found all lighthouses.")
-    mc.postToChat("Press button to start game")
-        #pibrella.button.read() == 1:
 
 if __name__ == "__main__":
     mc.postToChat("----HELP THE PIRATES----")
-    mc.postToChat("Destroy 10 minis, then the huge lighthouse ")
+    mc.postToChat("Destroy 10 lighthouses, then find the booty ")
     run_game()

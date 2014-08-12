@@ -21,9 +21,9 @@ print("Joystick name: {%s}" % name )
 axes = joystick.get_numaxes()
 print("Number of axes: {%s}" % axes )
 # Average 8 year old
-calibration_factor = 1.02
+#calibration_factor = 1.02
 # Average Adult
-#calibration_factor = 1.05
+calibration_factor = 1.05
 ###############################################################
 ##### Make the game easier with high number_of_lighthouses_make
 ##### compared to number_of_lighthouses_find

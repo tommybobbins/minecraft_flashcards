@@ -1,5 +1,4 @@
 import mcpi.minecraft as minecraft
 import mcpi.block as block
 mc = minecraft.Minecraft.create()
-#mc.player.setTilePos(10,50,30)
-mc.player.setTilePos(0, 0, 0)
+mc.setBlocks(-128,40,-128,128,50,128,block.WOOL.id, 0)

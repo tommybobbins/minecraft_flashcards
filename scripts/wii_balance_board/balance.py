@@ -37,20 +37,20 @@ if __name__ == "__main__":
 #            print ("Mainly trying to move forward backwards")
             if forwards_or_backwards < 1.0/calibration_factor:
                 direction_of_travel="Forwards"
-                mc.player.setTilePos(pos.x,pos.y,pos.z-1)
+                mc.player.setTilePos(pos.x,pos.y,pos.z+1)
             elif forwards_or_backwards > 1.0*calibration_factor:
                 direction_of_travel="Backwards"
-                mc.player.setTilePos(pos.x,pos.y,pos.z+1)
+                mc.player.setTilePos(pos.x,pos.y,pos.z-1)
             else:
                 direction_of_travel="Stopped"
         elif abs_fb < abs_lr:
 #            print ("Mainly trying to move Left Right")
             if left_or_right < 1.0/calibration_factor:
                 direction_of_travel="Left"
-                mc.player.setTilePos(pos.x-1,pos.y,pos.z)
+                mc.player.setTilePos(pos.x+1,pos.y,pos.z)
             elif left_or_right > 1.0*calibration_factor:
                 direction_of_travel="Right"
-                mc.player.setTilePos(pos.x+1,pos.y,pos.z)
+                mc.player.setTilePos(pos.x-1,pos.y,pos.z)
             else:
                 direction_of_travel="Stopped"
         print (direction_of_travel)
