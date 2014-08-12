@@ -126,14 +126,17 @@ def run_game():
     bootyAvailable = True
     mc.postToChat("Find the booty me hearty")
     pibrella.light.off()
-    mc.postToChat("When the green lantern be lit, ye be close")
-    mc.postToChat("When the tick-tocker stops, ye be close")
+    mc.postToChat("When the three lanterns be lit, ")
+    mc.postToChat("near to the treasure ye sit, ")
+    mc.postToChat("the tick-tocker stops it... ")
     while (bootyAvailable == True):
         pos = mc.player.getTilePos()
         blockBelow = mc.getBlock(pos.x, pos.y - 1, pos.z)
         distance_to_booty = sqrt((pos.x - bootyx)**2 + (pos.y - bootyy)**2 + (pos.z - bootyz)**2)
         pibrella.buzzer.buzz((distance_to_booty+1.0)/10)
-        if (distance_to_booty < 150) and (distance_to_booty > 50):
+        if (distance_to_booty > 200):
+            pibrella.light.off()
+        elif (distance_to_booty > 100):
             pibrella.light.red.on()
         elif (distance_to_booty >= 50):
             pibrella.light.red.on()
@@ -142,6 +145,8 @@ def run_game():
             pibrella.light.red.on()
             pibrella.light.green.on()
             pibrella.light.amber.on()
+            mc.postToChat("Land on the booty. ")
+           
         #mc.postToChat("Distance to booty = %f " % distance_to_booty)
         if (blockBelow == 54):
             mc.postToChat("Found the booty")
