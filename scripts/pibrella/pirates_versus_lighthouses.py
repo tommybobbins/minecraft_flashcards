@@ -129,6 +129,7 @@ def run_game():
     mc.postToChat("When the three lanterns be lit, ")
     mc.postToChat("near to the treasure ye sit, ")
     mc.postToChat("the tick-tocker stops it... ")
+    toldToLandBooty=False
     while (bootyAvailable == True):
         pos = mc.player.getTilePos()
         blockBelow = mc.getBlock(pos.x, pos.y - 1, pos.z)
@@ -145,8 +146,9 @@ def run_game():
             pibrella.light.red.on()
             pibrella.light.green.on()
             pibrella.light.amber.on()
-            mc.postToChat("Land on the booty. ")
-           
+            if (toldToLandBooty == False):
+                mc.postToChat("Land on the booty. ")
+                toldToLandBooty = True 
         #mc.postToChat("Distance to booty = %f " % distance_to_booty)
         if (blockBelow == 54):
             mc.postToChat("Found the booty")
