@@ -31,6 +31,7 @@ import random
 def create_lighthouse(x,z):
     # Create a lighthouse at x,z 
     height = mc.getHeight(x,z)
+    mc.setBlocks(x-1, height-1, z-1,x+1, height -1 , z+1 , 48 )
     mc.setBlock(x, height, z , block.WOOL.id, 0 )
     mc.setBlock(x, height+1, z , block.WOOL.id, 14 )
     mc.setBlock(x, height+2, z , block.WOOL.id, 0 )
@@ -58,7 +59,7 @@ def run_game():
     mc.postToChat("Land on top of %i lighthouses!" % number_of_lighthouses_find)
     # Main game starts here
     start_game = time.time()
-   while (found_lighthouses < number_of_lighthouses_find):
+    while (found_lighthouses < number_of_lighthouses_find):
         if (pibrella_enabled):
             if (found_lighthouses >= number_of_lighthouses_find):
                 pibrella.light.all.on()

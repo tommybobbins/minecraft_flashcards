@@ -9,4 +9,4 @@ To install the Pibrella libraries
 
 Run the program using :
 
-    $sudo python lighthouse_pibrella.py
+    $ sudo python lighthouse_pibrella.py
