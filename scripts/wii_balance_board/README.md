@@ -2,7 +2,12 @@ Use xwiimote and Minecraft API to steer Steve with a balance board:
 
 Install the prerequisite packages:
 
-     $ sudo apt-get install bluez bluez-tools bluez-utils obex-data-server
+     $ sudo apt-get install bluez bluez-tools bluez-utils obex-data-server blueman
+
+Remove all the unnecessary packages:
+
+     $ sudo apt-get remove cups ssl-cert cups-client ghostscript-cups foomatic-filters avahi-daemon ghostscript-cups
+     $ sudo apt-get autoremove
      $ sudo apt-get install libtool libudev-dev libudev-dev libncurses5-dev
      $ sudo apt-get install autoconf jstest-gtk
 
