@@ -1,11 +1,13 @@
 Use xwiimote and Minecraft API to steer Steve with a balance board:
 
 Install the prerequisite packages:
+
    $ sudo apt-get install bluez bluez-tools bluez-utils obex-data-server
    $ sudo apt-get install libtool libudev-dev libudev-dev libncurses5-dev
    $ sudo apt-get install autoconf jstest-gtk
 
 Build: 
+
    $ git clone "https://github.com/dvdhrm/xwiimote"
    $ cd xwiimote
    $ ./autogen.sh 
