@@ -78,7 +78,7 @@ if __name__ == "__main__":
             if espeakEnabled:
                 espeak.synth(" %i to go" % number_of_lighthouses_left)
         else:
-            sleep(0.5)
+            sleep(0.1)
     end_game = time.time()
     elapsed = end_game - start_game 
     mc.postToChat("Found all lighthouses in %s seconds" % elapsed)
@@ -86,7 +86,6 @@ if __name__ == "__main__":
         (lhx,lhy,lhz)=lighthouses[key]
         destroy_lighthouse(lhx,lhy,lhz)
     if espeakEnabled:
-        sleep(1)
         espeak.synth("Found all lighthouses.")
     mc.postToChat("Removed all lighthouses")
     if (fourthreethree):
