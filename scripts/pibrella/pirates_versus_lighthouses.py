@@ -1,4 +1,5 @@
 #!/usr/bin/python
+import sys
 import mcpi.minecraft as minecraft
 import mcpi.block as block
 mc = minecraft.Minecraft.create()
@@ -8,12 +9,15 @@ from math import sqrt
 found_lighthouses = 0
 lighthouse = 0
 lighthouses = {}
+colourmap = {14 : "red", 13 : "green", 11 : "blue", 1: "orange", 4 : "yellow", 15 : "white" }
 ##### Make the game easier with high number_of_lighthouses_make
 ##### compared to number_of_lighthouses_find
 number_of_lighthouses_find = 10
 number_of_lighthouses_make = 30
 pibrella_enabled = False
 espeakEnabled=False
+sys.path.append("/home/pi/minecraft_flashcards/scripts/library/")
+from lighthouse_setup import create_lighthouse,destroy_lighthouse
 ###############################################
 # To enable the game to speak to the player:
 # $ sudo apt-get install python-espeak
@@ -29,21 +33,7 @@ import pibrella
 pibrella_enabled = True
 ###############################################
 import random
-def create_lighthouse(x,z):
-    # Create a lighthouse at x,z 
-    height = mc.getHeight(x,z)
-    mc.setBlocks(x-1, height-1, z-1,x+1, height -1 , z+1 , 48 )
-    mc.setBlock(x, height, z , block.WOOL.id, 0 )
-    mc.setBlock(x, height+1, z , block.WOOL.id, 14 )
-    mc.setBlock(x, height+2, z , block.WOOL.id, 0 )
-    mc.setBlock(x, height+3, z , block.WOOL.id, 14 )
-    mc.setBlock(x, height+4, z , 41 )
-    return (x,height,z)
 
-def destroy_lighthouse(x,y,z):
-    height = mc.getHeight(x,z)
-    mc.setBlocks(x-1, height, z-1 ,x+1 , height+6, z+1, block.AIR.id, 0 )
-#    mc.postToChat("Cleaning up lighthouse %i %i %i" % (x,y,z))
 
 def make_it_dark():
 ######35 is Wool###############
@@ -76,7 +66,10 @@ def run_game():
     while (lighthouse < number_of_lighthouses_make):
         xlighthouse=random.randint(-110,110)
         zlighthouse=random.randint(-110,110)
-        lighthouses[lighthouse]=create_lighthouse(xlighthouse,zlighthouse)
+        random_colour=random.choice(colourmap.keys())
+        lighthouses[lighthouse]=create_lighthouse(xlighthouse,zlighthouse,random_colour)
+        (currx,curry,currz) = lighthouses[lighthouse]
+        mc.setBlock(currx, curry+4, currz , 41 )
         #print ("%i %i %i" % (x,y,z) )
 #        mc.postToChat("Created lighthouse %i" % lighthouse)
         lighthouse += 1

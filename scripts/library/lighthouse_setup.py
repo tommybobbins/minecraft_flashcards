@@ -1,8 +1,5 @@
 #!/usr/bin/python
 colourmap = {14 : "red", 13 : "green", 11 : "blue", 1: "orange", 4 : "yellow", 15 : "white" }
-from piglow import PiGlow
-piglow = PiGlow()
-piglow.all(0)
 import mcpi.minecraft as minecraft
 import mcpi.block as block
 mc = minecraft.Minecraft.create()
