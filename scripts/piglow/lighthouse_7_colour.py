@@ -65,7 +65,7 @@ def light_piglow(colour,rotations):
     piglow.all(0)
     intensity = 0
     for j in range(rotations):
-        print ("Rotating %i " % j)
+#        print ("Rotating %i " % j)
         piglow.colour(ledcolour,intensity)            # Control the top arm (with PiGlow logo at the top)
         sleep(0.01)
         intensity += 1 
