@@ -36,7 +36,7 @@ calibration_factor = 1.05
 ##### Make the game easier with high number_of_lighthouses_make
 ##### compared to number_of_lighthouses_find
 number_of_lighthouses_find = 12
-number_of_lighthouses_make = 16
+number_of_lighthouses_make = 24
 map_sizea = 55 
 map_sizeb = 100
 espeakEnabled=False
