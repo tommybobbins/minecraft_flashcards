@@ -4,7 +4,6 @@ import mcpi.minecraft as minecraft
 import mcpi.block as block
 mc = minecraft.Minecraft.create()
 from time import sleep
-import opc
 import time
 import thread
 found_lighthouses = 0
