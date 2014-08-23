@@ -51,5 +51,7 @@ Scripts included with these flashcards are:
     lightonoff.py             - Gold/Diamond used to switch on / off 433 transmitter.
     lighthouse.py             - Race against the clock to switch on 10 lighthouses.
     wii_balance_board/        - Directory containing wii balance board Minecraft demos, including modified lighthouse game
-    pibrella/                 - Directory containing pibrella games
-    fadecandy/                - Directory containing wii balance board and fadecandy demos
+    pibrella/                 - Directory containing pibrella games.
+    fadecandy/                - Directory containing wii balance board and fadecandy demos.
+    piglow/		      - Directory containing piglow games.
+    library/                  - Directory containing code common to all the lighthouse games.	
