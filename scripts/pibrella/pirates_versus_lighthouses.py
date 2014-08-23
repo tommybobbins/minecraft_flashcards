@@ -75,8 +75,8 @@ def run_game():
         lighthouse += 1
 #    make_it_dark()
 #    mc.postToChat("Making it dark....")
-    xbooty=random.randint(-110,110)
-    ybooty=random.randint(-110,110)
+    xbooty=random.randint(-50,50)
+    ybooty=random.randint(-50,50)
     (bootyx,bootyy,bootyz)=plant_booty(xbooty,ybooty)
     mc.postToChat("Plant TNT on top of %i lighthouses!" % number_of_lighthouses_find)
     # Main game starts here
