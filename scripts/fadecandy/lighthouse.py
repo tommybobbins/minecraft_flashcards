@@ -16,23 +16,8 @@ lighthousegreen=0
 lighthouseblue=0
 sys.path.append("/home/pi/minecraft_flashcards/scripts/library/")
 from lighthouse_setup import create_lighthouse,destroy_lighthouse
-from rainbow_rotate import rainbow_rotate
-numLEDs = 16
-brightness = 256
-pulse_time = 0.04
-client = opc.Client('localhost:7890')
-leds_forward=(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
-leds_foneback=(15,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14)
-leds_reverse=(8,9,10,11,12,13,14,15,0,1,2,3,4,5,6,7)
-leds_roneback=(7,8,9,10,11,12,13,14,15,0,1,2,3,4,5,6)
-pixels = [ (0,0,0) ] * numLEDs
+from fadecandy import rainbow_rotate, light_neopixelring
 
-##############################################################
-bb_pos={}
-# Average 8 year old
-#calibration_factor = 1.02
-# Average Adult
-calibration_factor = 1.05
 ###############################################################
 ##### Make the game easier with high number_of_lighthouses_make
 ##### compared to number_of_lighthouses_find
@@ -49,20 +34,6 @@ from espeak import espeak
 espeakEnabled=True
 ###############################################
 import random
-
-def light_neopixelring(colours,rotations):
-    pixels = [ (0,0,0) ] * numLEDs
-    client.put_pixels(pixels)
-    for j in range(rotations):
-        for i in range(numLEDs):
-           pixels[leds_forward[i]] = colours
-           pixels[leds_reverse[i]] = colours
-           pixels[leds_foneback[i]] = (0,0,0)
-           pixels[leds_roneback[i]] = (0,0,0)
-           client.put_pixels(pixels)
-           time.sleep(pulse_time)
-##############################################################
-# Balance board code 
 
 
 def light_lighthouse(colour,lighthousered,lighthousegreen,lighthouseblue):
