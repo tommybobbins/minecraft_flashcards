@@ -55,7 +55,7 @@ def plant_booty(x,z):
 
 def remove_booty(x,z):
     height = mc.getHeight(x,z)
-    mc.setBlocks(x-3, height-1, z-3,x+3, height +90 , z+3 , 0 )
+    mc.setBlocks(x-3, height-1, z-3,x+3, height +5 , z+3 , 0 )
     return (x,height,z)
 
 def run_game():
@@ -132,9 +132,12 @@ def run_game():
             pibrella.light.off()
         elif (distance_to_booty > 100):
             pibrella.light.red.on()
+            pibrella.light.amber.off()
+            pibrella.light.green.off()
         elif (distance_to_booty >= 50):
             pibrella.light.red.on()
             pibrella.light.amber.on()
+            pibrella.light.green.off()
         elif (distance_to_booty > 0):
             pibrella.light.red.on()
             pibrella.light.green.on()
