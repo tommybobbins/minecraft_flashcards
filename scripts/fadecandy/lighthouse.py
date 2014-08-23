@@ -16,6 +16,7 @@ lighthousegreen=0
 lighthouseblue=0
 sys.path.append("/home/pi/minecraft_flashcards/scripts/library/")
 from lighthouse_setup import create_lighthouse,destroy_lighthouse
+from rainbow_rotate import rainbow_rotate
 numLEDs = 16
 brightness = 256
 pulse_time = 0.04
@@ -122,7 +123,7 @@ if __name__ == "__main__":
     end_game = time.time()
     elapsed = end_game - start_game 
     mc.postToChat("Found all lighthouses in %s seconds" % elapsed)
-    light_neopixelring(colourtuple,20)
+    rainbow_rotate(5)
     for key in lighthouses:
         (lhx,lhy,lhz)=lighthouses[key]
         destroy_lighthouse(lhx,lhy,lhz)
