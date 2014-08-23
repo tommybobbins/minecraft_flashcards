@@ -28,28 +28,21 @@ def destroy_lighthouse(x,y,z):
 
 
 def light_piglow(colour,rotations):
+    colourmap = {14 : "red", 13 : "green", 11 : "blue", 1: "orange", 4 : "yellow", 15 : "white" }
     from piglow import PiGlow
     piglow = PiGlow()
-    piglow.all(0)
+#    piglow.all(0)
     if ( colour != "all" ):
         ledcolour = colourmap[colour]
-    intensity = 0
-    for j in range(rotations):
-#        print ("Rotating %i " % j)
-        if (colour == "all"):
-#            print ("Trying to run piglow.arm bit %i " % intensity)
-            piglow.arm(1,intensity) 
-            piglow.arm(3,0) 
-            sleep(0.01)
-            piglow.arm(2,intensity) 
-            piglow.arm(1,0) 
-            sleep(0.01)
-            piglow.arm(3,intensity) 
-            piglow.arm(2,0) 
-            sleep(0.01)
-        else:
-            piglow.colour(ledcolour,intensity)            # Control the top arm (with PiGlow logo at the top)
-#            print("j= %i " % j)            # Control the top arm (with PiGlow logo at the top)
-            sleep(0.01)
-        intensity += 1 
+        for j in range(rotations):
+            piglow.colour(ledcolour,j) 
+            sleep(0.001*j) # As the intensity increases, sleep for longer periods
+    else:
+    #    print ("Trying to run all ")
+        for j in range(rotations):
+            for colour in (colourmap.values()):
+                piglow.colour(("%s" % colour), 255)
+                sleep(0.2) 
+                piglow.colour(colour, 0)
+                sleep(0.01)
     piglow.all(0)

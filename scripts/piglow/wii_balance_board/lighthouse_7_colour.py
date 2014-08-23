@@ -71,7 +71,7 @@ if __name__ == "__main__":
     end_game = time.time()
     elapsed = end_game - start_game 
     mc.postToChat("Found all lighthouses in %s seconds" % elapsed)
-    light_piglow("all",255)
+    light_piglow("all",30)
     for key in lighthouses:
         (lhx,lhy,lhz)=lighthouses[key]
         destroy_lighthouse(lhx,lhy,lhz)
