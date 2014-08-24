@@ -9,6 +9,7 @@ from math import sqrt
 found_lighthouses = 0
 lighthouse = 0
 lighthouses = {}
+(shipx,shipy,shipz) = 0,0,0
 colourmap = {14 : "red", 13 : "green", 11 : "blue", 1: "orange", 4 : "yellow", 15 : "white" }
 ##### Make the game easier with high number_of_lighthouses_make
 ##### compared to number_of_lighthouses_find
@@ -17,7 +18,7 @@ number_of_lighthouses_make = 30
 pibrella_enabled = False
 espeakEnabled=False
 sys.path.append("/home/pi/minecraft_flashcards/scripts/library/")
-from lighthouse_setup import create_lighthouse,destroy_lighthouse
+from lighthouse_setup import create_lighthouse,destroy_lighthouse,make_pirate_ship
 ###############################################
 # To enable the game to speak to the player:
 # $ sudo apt-get install python-espeak
@@ -61,8 +62,22 @@ def remove_booty(x,z):
 def run_game():
     found_lighthouses = 0
     toldtoPressTNT = False
+    indeepwater = False
+    mc.postToChat("Find deep water and push the button" )
     lighthouse = 0
         # Build initial set of lighthouses at random positions on the map
+    while (indeepwater == False):
+        pos = mc.player.getTilePos()
+        if pibrella.button.read() == 1:
+            blockBelow = mc.getBlock(pos.x, pos.y - 1, pos.z)
+            block2Below = mc.getBlock(pos.x, pos.y - 2, pos.z)
+            if (blockBelow == 9) and (block2Below == 9):
+                (shipx,shipy,shipz)=make_pirate_ship(4,15,3)
+                indeepwater = True
+            else:
+                mc.postToChat("Block below = %i, %i" % (blockBelow, block2Below))
+                mc.postToChat("Find deep water and push the button" )
+            
     while (lighthouse < number_of_lighthouses_make):
         xlighthouse=random.randint(-110,110)
         zlighthouse=random.randint(-110,110)
@@ -78,6 +93,8 @@ def run_game():
     xbooty=random.randint(-50,50)
     ybooty=random.randint(-50,50)
     (bootyx,bootyy,bootyz)=plant_booty(xbooty,ybooty)
+    # 
+
     mc.postToChat("Plant TNT on top of %i lighthouses!" % number_of_lighthouses_find)
     # Main game starts here
     start_game = time.time()
@@ -150,17 +167,47 @@ def run_game():
             mc.postToChat("Found the booty")
             mc.postToChat("YOHOHO")
             bootyAvailable = False  
+    remove_booty(xbooty,ybooty)
+    mc.postToChat("Now back to the ship")
+    netherAvailable = True
+    toldToLandNether=False
+    while (netherAvailable == True):
+        pos = mc.player.getTilePos()
+        blockBelow = mc.getBlock(pos.x, pos.y - 1, pos.z)
+        distance_to_ship = sqrt((pos.x - shipx)**2 + (pos.y - shipy)**2 + (pos.z - shipz)**2)
+        pibrella.buzzer.buzz((distance_to_ship+1.0)/10)
+        if (distance_to_ship > 200):
+            pibrella.light.off()
+        elif (distance_to_ship > 100):
+            pibrella.light.red.on()
+            pibrella.light.amber.off()
+            pibrella.light.green.off()
+        elif (distance_to_ship >= 50):
+            pibrella.light.red.on()
+            pibrella.light.amber.on()
+            pibrella.light.green.off()
+        elif (distance_to_ship > 0):
+            pibrella.light.red.on()
+            pibrella.light.green.on()
+            pibrella.light.amber.on()
+            if (toldToLandNether == False):
+                mc.postToChat("Go into The Captain's Cabin.")
+                toldToLandNether = True 
+        #mc.postToChat("Distance to booty = %f " % distance_to_booty)
+        if (blockBelow == 247):
+            mc.postToChat("You won me hearty")
+            mc.postToChat("YOHOHO")
+            netherAvailable = False  
     end_game = time.time()
     elapsed = end_game - start_game 
     if pibrella_enabled: 
         pibrella.buzzer.off()
         pibrella.buzzer.success()
         pibrella.buzzer.off()
-    mc.postToChat("Found all lighthouses in %s seconds" % elapsed)
+    mc.postToChat("Completed game in %s seconds" % elapsed)
     for key in lighthouses:
         (lhx,lhy,lhz)=lighthouses[key]
         destroy_lighthouse(lhx,lhy,lhz)
-    remove_booty(xbooty,ybooty)
 #    make_it_light()
     if espeakEnabled:
         espeak.synth("Found all lighthouses.")

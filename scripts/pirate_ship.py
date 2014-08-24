@@ -25,17 +25,17 @@ while theta <= (2*pi):
 
 #### CAPTAINS CABIN##################################
 # Main box
-mc.setBlocks(pos.x + (a/2) , pos.y + height , pos.z + (b - 1), pos.x - (a/2), pos.y + (height + 3), pos.z + (b/2) , 5)    
+mc.setBlocks(pos.x + (a/2) , pos.y + height , pos.z + (b - 1), pos.x - (a/2), pos.y + (height + 4), pos.z + (b/2) , 5)    
 # Air box inside
-mc.setBlocks(pos.x + (a/2) - 1 , pos.y + height + 1  , pos.z + (b - 2), pos.x - (a/2) + 1, pos.y + (height + 2), pos.z + ((b/2) - 2) , 0)    
+mc.setBlocks(pos.x + (a/2) - 1 , pos.y + height + 1  , pos.z + (b - 2), pos.x - (a/2) + 1, pos.y + (height + 3), pos.z + ((b/2) - 2) , 0)    
 # Aft section
 mc.setBlocks(pos.x + (a - 1) , pos.y + height , pos.z + (b - 1), pos.x - (a - 1), pos.y + height, pos.z + (b - ((3*b)/4)) , 5)    
 # Forecastle
 mc.setBlocks(pos.x + (a - 2) , pos.y + height , pos.z - (b - 1), pos.x - (a - 2), pos.y + height, pos.z - (b - ((1*b)/2)) , 5)    
 # Doors windows etc
 # Glass
+mc.setBlocks(pos.x + (a/2 - 1),pos.y + height + 1, pos.z + (b/2), pos.x - (a/2 - 1), pos.y + height +3, pos.z + (b/2), 5 ) 
 mc.setBlocks(pos.x + (a/2 - 1),pos.y + height + 2, pos.z + (b/2), pos.x - (a/2 - 1), pos.y + height +2, pos.z + (b/2), 20 ) 
-mc.setBlocks(pos.x + (a/2 - 1),pos.y + height + 1, pos.z + (b/2), pos.x - (a/2 - 1), pos.y + height +1, pos.z + (b/2), 5 ) 
 # Door
 mc.setBlocks(pos.x,pos.y + height + 1, pos.z + (b/2),pos.x,pos.y + height + 2, pos.z + (b/2), 0 ) 
 mc.setBlock(pos.x,pos.y + height + 1, pos.z + (b/2), 64 ) 
@@ -68,16 +68,16 @@ mc.setBlock(pos.x, pos.y + height + 13, pos.z + 3 , 35,0)
 mc.setBlock(pos.x, pos.y + height + 13, pos.z + 5 , 35,0)    
 
 #### SAIL############################################
-mc.setBlocks(pos.x - 5 , pos.y + 4 , pos.z , pos.x - 5, pos.y + (height + 12), pos.z , 35,0)    
-mc.setBlocks(pos.x - 4 , pos.y + 4 , pos.z , pos.x - 4, pos.y + (height + 12), pos.z , 35,14)    
-mc.setBlocks(pos.x - 3 , pos.y + 4 , pos.z , pos.x - 3, pos.y + (height + 12), pos.z , 35,0)    
-mc.setBlocks(pos.x - 2 , pos.y + 4 , pos.z , pos.x - 2, pos.y + (height + 12), pos.z , 35,14)    
-mc.setBlocks(pos.x - 1 , pos.y + 4 , pos.z , pos.x - 1, pos.y + (height + 12), pos.z , 35,0)    
-mc.setBlocks(pos.x - 0 , pos.y + 4 , pos.z , pos.x - 0, pos.y + (height + 12), pos.z , 35,14)    
-mc.setBlocks(pos.x + 1 , pos.y + 4 , pos.z , pos.x + 1, pos.y + (height + 12), pos.z , 35,0)    
-mc.setBlocks(pos.x + 2 , pos.y + 4 , pos.z , pos.x + 2, pos.y + (height + 12), pos.z , 35,14)    
-mc.setBlocks(pos.x + 3 , pos.y + 4 , pos.z , pos.x + 3, pos.y + (height + 12), pos.z , 35,0)    
-mc.setBlocks(pos.x + 4 , pos.y + 4 , pos.z , pos.x + 4, pos.y + (height + 12), pos.z , 35,14)    
-mc.setBlocks(pos.x + 5 , pos.y + 4 , pos.z , pos.x + 5, pos.y + (height + 12), pos.z , 35,0)    
+mc.setBlocks(pos.x - 5 , pos.y + height + 2, pos.z , pos.x - 5, pos.y + (height + 12), pos.z , 35,0)    
+mc.setBlocks(pos.x - 4 , pos.y + height + 2, pos.z , pos.x - 4, pos.y + (height + 12), pos.z , 35,14)    
+mc.setBlocks(pos.x - 3 , pos.y + height + 2, pos.z , pos.x - 3, pos.y + (height + 12), pos.z , 35,0)    
+mc.setBlocks(pos.x - 2 , pos.y + height + 2, pos.z , pos.x - 2, pos.y + (height + 12), pos.z , 35,14)    
+mc.setBlocks(pos.x - 1 , pos.y + height + 2, pos.z , pos.x - 1, pos.y + (height + 12), pos.z , 35,0)    
+mc.setBlocks(pos.x - 0 , pos.y + height + 2, pos.z , pos.x - 0, pos.y + (height + 12), pos.z , 35,14)    
+mc.setBlocks(pos.x + 1 , pos.y + height + 2, pos.z , pos.x + 1, pos.y + (height + 12), pos.z , 35,0)    
+mc.setBlocks(pos.x + 2 , pos.y + height + 2, pos.z , pos.x + 2, pos.y + (height + 12), pos.z , 35,14)    
+mc.setBlocks(pos.x + 3 , pos.y + height + 2, pos.z , pos.x + 3, pos.y + (height + 12), pos.z , 35,0)    
+mc.setBlocks(pos.x + 4 , pos.y + height + 2, pos.z , pos.x + 4, pos.y + (height + 12), pos.z , 35,14)    
+mc.setBlocks(pos.x + 5 , pos.y + height + 2, pos.z , pos.x + 5, pos.y + (height + 12), pos.z , 35,0)    
 
-mc.player.setPos(pos.x,pos.y + height, pos.z + (b/2) + 2, 247 ) 
+mc.player.setPos(pos.x,pos.y + height + 1, pos.z + (b/2) + 2, 247 ) 
