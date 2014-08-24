@@ -67,8 +67,8 @@ def run_game():
     lighthouse = 0
         # Build initial set of lighthouses at random positions on the map
     while (indeepwater == False):
-        pos = mc.player.getTilePos()
         if pibrella.button.read() == 1:
+            pos = mc.player.getTilePos()
             blockBelow = mc.getBlock(pos.x, pos.y - 1, pos.z)
             block2Below = mc.getBlock(pos.x, pos.y - 2, pos.z)
             if (blockBelow == 9) and (block2Below == 9):
