@@ -24,11 +24,24 @@ while theta <= (2*pi):
 #
 
 #### CAPTAINS CABIN##################################
+# Main box
 mc.setBlocks(pos.x + (a/2) , pos.y + height , pos.z + (b - 1), pos.x - (a/2), pos.y + (height + 3), pos.z + (b/2) , 5)    
+# Air box inside
 mc.setBlocks(pos.x + (a/2) - 1 , pos.y + height + 1  , pos.z + (b - 2), pos.x - (a/2) + 1, pos.y + (height + 2), pos.z + ((b/2) - 2) , 0)    
+# Aft section
 mc.setBlocks(pos.x + (a - 1) , pos.y + height , pos.z + (b - 1), pos.x - (a - 1), pos.y + height, pos.z + (b - ((3*b)/4)) , 5)    
 # Forecastle
 mc.setBlocks(pos.x + (a - 2) , pos.y + height , pos.z - (b - 1), pos.x - (a - 2), pos.y + height, pos.z - (b - ((3*b)/4)) , 5)    
+# Doors windows etc
+# Glass
+mc.setBlocks(pos.x + (a/2 - 1),pos.y + height + 2, pos.z + (b/2), pos.x - (a/2 - 1), pos.y + height +2, pos.z + (b/2), 20 ) 
+mc.setBlocks(pos.x + (a/2 - 1),pos.y + height + 1, pos.z + (b/2), pos.x - (a/2 - 1), pos.y + height +1, pos.z + (b/2), 5 ) 
+# Door
+mc.setBlocks(pos.x,pos.y + height + 1, pos.z + (b/2),pos.x,pos.y + height + 2, pos.z + (b/2), 0 ) 
+mc.setBlock(pos.x,pos.y + height + 1, pos.z + (b/2), 64 ) 
+mc.setBlock(pos.x,pos.y + height + 2, pos.z + (b/2), 64 ) 
+# Wood slab used to detect when player is in ship
+mc.setBlock(pos.x,pos.y + height, pos.z + (b/2) + 2, 247 ) 
 
 #### BOW SPIRIT #####################################
 mc.setBlocks(pos.x , pos.y + height , pos.z - b , pos.x, pos.y + height, pos.z - b - 5  , 5)    
