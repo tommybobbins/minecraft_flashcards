@@ -46,12 +46,10 @@ Scripts included with these flashcards are:
     tnt_explodes.py           - Explosive block TNT.
     woolly_world.py           - Wool totem to show all colours.
     woody_world.py            - Wood totem to show wood types.
-    lighton.py                - Switch a 240V light on using a 433 transmitter.
-    threeon.py                - Used for turning on/off Energenie 433 transmitter.
-    lightonoff.py             - Gold/Diamond used to switch on / off 433 transmitter.
     lighthouse.py             - Race against the clock to switch on 10 lighthouses.
-    wii_balance_board/        - Directory containing wii balance board Minecraft demos, including modified lighthouse game
-    pibrella/                 - Directory containing pibrella games.
-    fadecandy/                - Directory containing fadecandy demos.
-    piglow/		      - Directory containing piglow games. Contains awesome pirate treasure game.
+    fourthreethree/           - Switch on/off 240V sockets using home automation & Minecraft.
+    wii_balance_board/        - Wii balance board demos.
+    pibrella/                 - Pibrella games. Pirate treasure game.
+    fadecandy/                - Fadecandy demos for use with Adafruit neopixels.
+    piglow/                   - Piglow games.
     library/                  - Directory containing code common to all the lighthouse games.	
