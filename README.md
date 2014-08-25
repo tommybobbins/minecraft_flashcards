@@ -52,6 +52,6 @@ Scripts included with these flashcards are:
     lighthouse.py             - Race against the clock to switch on 10 lighthouses.
     wii_balance_board/        - Directory containing wii balance board Minecraft demos, including modified lighthouse game
     pibrella/                 - Directory containing pibrella games.
-    fadecandy/                - Directory containing wii balance board and fadecandy demos.
-    piglow/		      - Directory containing piglow games.
+    fadecandy/                - Directory containing fadecandy demos.
+    piglow/		      - Directory containing piglow games. Contains awesome pirate treasure game.
     library/                  - Directory containing code common to all the lighthouse games.	
