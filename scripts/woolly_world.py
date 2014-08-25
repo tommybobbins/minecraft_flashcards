@@ -8,4 +8,4 @@ height = mc.getHeight(x,z)
 
 for number in range(0,15):
     mc.setBlock(x, height, z , block.WOOL.id, number )
-    height += 1 
+    height += 1

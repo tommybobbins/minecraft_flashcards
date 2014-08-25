@@ -17,9 +17,9 @@ def make_walls(x1,y1,z1,x2,y2,z2,material,floormaterial,roofmaterial,crenelation
     mc.setBlocks(x1 - 1, y1-1, z1 + 1, x2 + 1, y1 -1, z2 -1, floormaterial)
     if (roofmaterial != block.AIR):
         mc.setBlocks(x1 - 1, y2-2, z1 + 1, x2 + 1, y2 -2, z2 -1, roofmaterial)
-# Making Crenelations is slow, set to False for rapid building. 
+# Making Crenelations is slow, set to False for rapid building.
 # Add True when you are happy #
-    if crenelations: 
+    if crenelations:
         x2 = int(x2) # Make all co-ordinates integers
         x1 = int(x1)
         z1 = int(z1)

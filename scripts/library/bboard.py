@@ -3,7 +3,7 @@ import pygame
 pygame.init()
 from time import sleep
 import time
-# Balance board code 
+# Balance board code
 # Initialize the joysticks
 pygame.joystick.init()
 joystick = pygame.joystick.Joystick(0)

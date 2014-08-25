@@ -28,4 +28,3 @@ while number_trees < max_trees:
     z = pos.z + random.randint(-1 * max_trees,max_trees)
     makeTree(x,z)
     number_trees += 1
-

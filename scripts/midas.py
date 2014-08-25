@@ -13,4 +13,3 @@ while True:
         mc.postToChat("Not placing block. Over water or air")
         sleep(1)
     sleep(0.1)
-

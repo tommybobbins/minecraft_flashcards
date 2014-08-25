@@ -50,7 +50,7 @@ def sequence(incoming_string):
     GPIO.output(18,False)
     time.sleep(450*sample_length)
     while count < 8:
-        # Split the 1's and 0 into component parts and then run associated 
+        # Split the 1's and 0 into component parts and then run associated
         #function
         for b in list(incoming_string):
             b = int(b)
@@ -65,30 +65,30 @@ def sequence(incoming_string):
         time.sleep(150*sample_length)
         GPIO.output(18,False)
     # Sleep 2 seconds between sequences
-    time.sleep(0.3) 
+    time.sleep(0.3)
 
-def switch_socket(on_or_off): 
-     # 1,2,3,4 on
+def switch_socket(on_or_off):
+    # 1,2,3,4 on
 #     sequence('1011111100010000000011110')
 #     sequence('1011111100010000000001110')
-     if (on_or_off == "on"):
-         sequence('1011111100010000000010110')
-     elif (on_or_off == "off"):
-         sequence('1011111100010000000010100')
+    if (on_or_off == "on"):
+        sequence('1011111100010000000010110')
+    elif (on_or_off == "off"):
+        sequence('1011111100010000000010100')
 #         sequence('1011111100010000000011000')
 #     time.sleep(1)
 #     sequence('1011111100010000000000110')
-     # 1,2,3,4 off
+    # 1,2,3,4 off
 #     sequence('1011111100010000000011100')
 #     sequence('1011111100010000000001100')
 #     sequence('1011111100010000000000100')
-     # Master
+    # Master
 #     sequence('1011111100010000000011010')
 #     sequence('1011111100010000000011000')
-     GPIO.cleanup()
+    GPIO.cleanup()
 
 if __name__ == "__main__":
-    try: 
+    try:
         time.sleep(4)
         switch_socket("on")
         time.sleep(4)

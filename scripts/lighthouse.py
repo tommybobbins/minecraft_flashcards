@@ -11,7 +11,7 @@ lighthouses={}
 ##### compared to number_of_lighthouses_find
 number_of_lighthouses_find = 10
 number_of_lighthouses_make = 30
-map_sizea = 55 
+map_sizea = 55
 map_sizeb = 192
 fourthreethree = False
 espeakEnabled=False
@@ -29,7 +29,7 @@ espeakEnabled=True
 ###############################################
 import random
 def create_lighthouse(x,z):
-    # Create a lighthouse at x,z 
+    # Create a lighthouse at x,z
     height = mc.getHeight(x,z)
     mc.setBlock(x, height, z , block.WOOL.id, 0 )
     mc.setBlock(x, height+1, z , block.WOOL.id, 14 )
@@ -80,7 +80,7 @@ if __name__ == "__main__":
         else:
             sleep(0.5)
     end_game = time.time()
-    elapsed = end_game - start_game 
+    elapsed = end_game - start_game
     mc.postToChat("Found all lighthouses in %s seconds" % elapsed)
     for key in lighthouses:
         (lhx,lhy,lhz)=lighthouses[key]

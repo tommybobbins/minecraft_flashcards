@@ -18,7 +18,7 @@ from lighthouse_setup import create_lighthouse,destroy_lighthouse,light_piglow
 ##### compared to number_of_lighthouses_find
 number_of_lighthouses_find = 12
 number_of_lighthouses_make = 16
-map_sizea = 55 
+map_sizea = 55
 map_sizeb = 100
 espeakEnabled=False
 ###############################################
@@ -67,7 +67,7 @@ if __name__ == "__main__":
         else:
             sleep(0.01)
     end_game = time.time()
-    elapsed = end_game - start_game 
+    elapsed = end_game - start_game
     mc.postToChat("Found all lighthouses in %s seconds" % elapsed)
     light_piglow("all",30)
     for key in lighthouses:

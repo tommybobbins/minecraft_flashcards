@@ -10,4 +10,3 @@ while True: #Will keep running until Cntrl-C pressed
     randomy += 20
     mc.setBlock(randomx, randomy, randomz, block.GRAVEL)
     sleep(0.1)
-

@@ -84,7 +84,7 @@ allblocks=[
 #   block.CLAY,
 
 for BLOCKTYPE in allblocks:
-    height += 1 
+    height += 1
 #    print BLOCKTYPE
 #    print ("x=%i, y=%i, z = %i" % (x,height,z))
     mc.setBlock(x, height, z , BLOCKTYPE.id )

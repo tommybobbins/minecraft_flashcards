@@ -1,11 +1,11 @@
 import mcpi.minecraft as minecraft
 import mcpi.block as block
 import random
- 
+
 """ draw a building
- 
+
     @author: goldfish"""
- 
+
 def drawBuilding( locx, locy, locz, floors, width, depth, floorheight, wallmaterial, floormaterial, roofmaterial ):
     topx = locx+width
     topy = locy+((floorheight+1)*floors)
@@ -45,7 +45,7 @@ def drawBuilding( locx, locy, locz, floors, width, depth, floorheight, wallmater
         level = level + 0.5
 #####End of Pyramid tiles
 
- 
+
 if __name__ == "__main__":
     mc = minecraft.Minecraft.create()
     pos = mc.player.getPos()

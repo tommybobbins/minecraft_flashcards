@@ -14,26 +14,26 @@ pixels = [ (0,0,0) ] * numLEDs
 
 def rainbow_rotate(rotations):
     # Light each LED in sequence, and repeat.
-    rainbow = { "red":(255,0,0), "orange":(255,127,0), "yellow":(255,255,0), "green":(0,255,0), "blue":(0,0,255), "indigo":(75,0,130), "violet":(143,0,255), "white":(255,255,255), "black":(0,0,0) } 
+    rainbow = { "red":(255,0,0), "orange":(255,127,0), "yellow":(255,255,0), "green":(0,255,0), "blue":(0,0,255), "indigo":(75,0,130), "violet":(143,0,255), "white":(255,255,255), "black":(0,0,0) }
     for j in range(rotations):
-       for colour in ("red","orange","yellow","green","blue","indigo","violet","white","black"):
+        for colour in ("red","orange","yellow","green","blue","indigo","violet","white","black"):
 #           print ("%s %s " % (colour, rainbow[colour]))
-           for i in range(numLEDs):
-               pixels[i] = rainbow[colour]
-               client.put_pixels(pixels)
-               time.sleep(0.04)
+            for i in range(numLEDs):
+                pixels[i] = rainbow[colour]
+                client.put_pixels(pixels)
+                time.sleep(0.04)
 
 def light_neopixelring(colours,rotations):
     pixels = [ (0,0,0) ] * numLEDs
     client.put_pixels(pixels)
     for j in range(rotations):
         for i in range(numLEDs):
-           pixels[leds_forward[i]] = colours
-           pixels[leds_reverse[i]] = colours
-           pixels[leds_foneback[i]] = (0,0,0)
-           pixels[leds_roneback[i]] = (0,0,0)
-           client.put_pixels(pixels)
-           time.sleep(pulse_time)
+            pixels[leds_forward[i]] = colours
+            pixels[leds_reverse[i]] = colours
+            pixels[leds_foneback[i]] = (0,0,0)
+            pixels[leds_roneback[i]] = (0,0,0)
+            client.put_pixels(pixels)
+            time.sleep(pulse_time)
 
 if __name__ == "__main__":
-       rainbow_rotate(3) 
+    rainbow_rotate(3)
