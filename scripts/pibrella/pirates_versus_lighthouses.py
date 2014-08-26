@@ -63,7 +63,7 @@ def run_game():
     found_lighthouses = 0
     toldtoPressTNT = False
     indeepwater = False
-    mc.postToChat("Find deep water and push the button" )
+    mc.postToChat("Find deep water and push the blue button" )
     lighthouse = 0
     # Build initial set of lighthouses at random positions on the map
     while (indeepwater == False):
@@ -74,6 +74,9 @@ def run_game():
             if (blockBelow == 9) and (block2Below == 9):
                 (shipx,shipy,shipz)=make_pirate_ship(4,15,3)
                 indeepwater = True
+            elif (blockBelow == 247):
+                indeepwater = True
+                (shipx,shipy,shipz) = (pos.x,pos.y,pos.z)
             else:
                 mc.postToChat("Block below = %i, %i" % (blockBelow, block2Below))
                 mc.postToChat("Find deep water and push the button" )
