@@ -42,11 +42,12 @@ Scripts included with these flashcards are:
     whereami.py               - Find player location.
     a_forest.py               - Random forest around player.
     pyramid.py                - Pyramid.
-    castle.py	              - Castle and bailey
+    castle.py	              - Castle and bailey.
     tnt_explodes.py           - Explosive block TNT.
     woolly_world.py           - Wool totem to show all colours.
     woody_world.py            - Wood totem to show wood types.
     lighthouse.py             - Race against the clock to switch on 10 lighthouses.
+    pirate_ship.py	      - Create a pirate ship.
     fourthreethree/           - Switch on/off 240V sockets using home automation & Minecraft.
     wii_balance_board/        - Wii balance board demos.
     pibrella/                 - Pibrella games. Pirate treasure game.

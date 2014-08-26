@@ -68,12 +68,15 @@ def run_game():
     # Build initial set of lighthouses at random positions on the map
     while (indeepwater == False):
         if pibrella.button.read() == 1:
+            # Check squares below player
             pos = mc.player.getTilePos()
             blockBelow = mc.getBlock(pos.x, pos.y - 1, pos.z)
             block2Below = mc.getBlock(pos.x, pos.y - 2, pos.z)
+            # If we are on at least two blocks deep water
             if (blockBelow == 9) and (block2Below == 9):
                 (shipx,shipy,shipz)=make_pirate_ship(4,15,3)
                 indeepwater = True
+            # Or we are on a pre-existing pirate ship 
             elif (blockBelow == 247):
                 indeepwater = True
                 (shipx,shipy,shipz) = (pos.x,pos.y,pos.z)
