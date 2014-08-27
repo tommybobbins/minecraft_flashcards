@@ -47,10 +47,11 @@ Scripts included with these flashcards are:
     woolly_world.py           - Wool totem to show all colours.
     woody_world.py            - Wood totem to show wood types.
     lighthouse.py             - Race against the clock to switch on 10 lighthouses.
-    pirate_ship.py	      - Create a pirate ship.
+    pirate_ship.py            - Create a pirate ship.
     fourthreethree/           - Switch on/off 240V sockets using home automation & Minecraft.
     wii_balance_board/        - Wii balance board demos.
+    ps3_controller/	      - Installing the PS3 controller for use with Minecraft.
     pibrella/                 - Pibrella games. Pirate treasure game.
-    fadecandy/                - Fadecandy demos for use with Adafruit neopixels.
     piglow/                   - Piglow games.
+    fadecandy/                - Fadecandy demos for use with Adafruit neopixels.
     library/                  - Directory containing code common to all the lighthouse games.	
