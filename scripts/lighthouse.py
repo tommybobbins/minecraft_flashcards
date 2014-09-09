@@ -17,8 +17,8 @@ fourthreethree = False
 espeakEnabled=False
 ###############################################
 ###Uncomment if there is a 433 Transmitter
-#from fourthreethree_transmitter.threeon import switch_socket
-#fourthreethree = True
+from fourthreethree_transmitter.threeon import switch_socket
+fourthreethree = True
 ###############################################
 ###############################################
 # To enable the game to speak to the player:
@@ -70,13 +70,14 @@ if __name__ == "__main__":
             mc.postToChat("On!")
             if (fourthreethree):
                 switch_socket('on')
-                sleep(1)
-                switch_socket('off')
             found_lighthouses += 1
             number_of_lighthouses_left = number_of_lighthouses_find - found_lighthouses
             mc.postToChat("Found %i lighthouses, %i to go" % (found_lighthouses,number_of_lighthouses_left))
             if espeakEnabled:
                 espeak.synth(" %i to go" % number_of_lighthouses_left)
+            if (fourthreethree): 
+                sleep(10)
+                switch_socket('off')
         else:
             sleep(0.5)
     end_game = time.time()
