@@ -3,6 +3,7 @@ import mcpi.minecraft as minecraft
 import mcpi.block as block
 mc = minecraft.Minecraft.create()
 from time import sleep
+import thread
 import time
 found_lighthouses = 0
 lighthouse = 0
@@ -69,15 +70,17 @@ if __name__ == "__main__":
             mc.setBlock(pos.x, pos.y - 1 , pos.z , 41 )
             mc.postToChat("On!")
             if (fourthreethree):
-                switch_socket('on')
+#                thread.start_new_thread(switch_socket,("on",))
+                switch_socket("on")
             found_lighthouses += 1
             number_of_lighthouses_left = number_of_lighthouses_find - found_lighthouses
             mc.postToChat("Found %i lighthouses, %i to go" % (found_lighthouses,number_of_lighthouses_left))
             if espeakEnabled:
                 espeak.synth(" %i to go" % number_of_lighthouses_left)
             if (fourthreethree): 
-                sleep(10)
-                switch_socket('off')
+#                thread.start_new_thread(switch_socket,("off",))
+                sleep(2)
+                switch_socket("off")
         else:
             sleep(0.5)
     end_game = time.time()
@@ -91,4 +94,6 @@ if __name__ == "__main__":
         espeak.synth("Found all lighthouses.")
     mc.postToChat("Removed all lighthouses")
     if (fourthreethree):
+        switch_socket('on')
+        sleep(5)
         switch_socket('off')
