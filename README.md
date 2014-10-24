@@ -47,6 +47,7 @@ Scripts included with these flashcards are:
     woody_world.py            - Wood totem to show wood types.
     lighthouse.py             - Race against the clock to switch on 10 lighthouses.
     pirate_ship.py            - Create a pirate ship.
+    blackpool.py              - Work in progress of Blackpool tower.
     fourthreethree/           - Switch on/off 240V sockets using home automation & Minecraft.
     wii_balance_board/        - Wii balance board demos.
     ps3_controller/	      - Installing the PS3 controller for use with Minecraft.
